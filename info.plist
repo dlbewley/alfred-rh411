@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>net.bewley.dale.rhemp</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>07DF4E1A-CEA4-41F4-A9E4-5302F0AEC12E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>04C0E16D-1CE2-4F3A-B903-D8E6DB8EF0E8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Dale Bewley</string>
+	<key>description</key>
+	<string>Red Hat 411 Employee Information Tool</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Red Hat Employee Lookup</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>rhldap</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>2</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Querying LDAP</string>
+				<key>script</key>
+				<string>/usr/bin/python ldap-alfred.py "{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Requires VPN connection</string>
+				<key>title</key>
+				<string>Red Hat LDAP Lookup</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>07DF4E1A-CEA4-41F4-A9E4-5302F0AEC12E</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string></string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>04C0E16D-1CE2-4F3A-B903-D8E6DB8EF0E8</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Does LDAP lookup and presents contact info for a user.</string>
+	<key>uidata</key>
+	<dict>
+		<key>04C0E16D-1CE2-4F3A-B903-D8E6DB8EF0E8</key>
+		<dict>
+			<key>xpos</key>
+			<integer>375</integer>
+			<key>ypos</key>
+			<integer>30</integer>
+		</dict>
+		<key>07DF4E1A-CEA4-41F4-A9E4-5302F0AEC12E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>30</integer>
+			<key>ypos</key>
+			<integer>30</integer>
+		</dict>
+	</dict>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>0.0.6</string>
+	<key>webaddress</key>
+	<string>http://guifreelife.com/</string>
+</dict>
+</plist>
