@@ -6,6 +6,9 @@ dep: lib
     pip install --target=. Alfred-Workflow; \
     pip install --target=lib -r requirements.txt
 
+clean:
+	rm -rf lib workflow
+
 build:
 	zip -r ../$(PKG)-$(VER).alfredworkflow *
 
