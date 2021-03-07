@@ -102,7 +102,13 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>Does LDAP lookup and presents contact info for a user.</string>
+	<string>Looks up employees in company directory and presents contact info and related context.
+
+Try out ⌘L and ⌘Y on each item.
+
+LDAP variables are exposed to customize the connection, but the data handling is currently specific to Red Hat LDAP attributes.
+
+https://github.com/dlbewley/alfred-rh411</string>
 	<key>uidata</key>
 	<dict>
 		<key>04C0E16D-1CE2-4F3A-B903-D8E6DB8EF0E8</key>
@@ -132,7 +138,7 @@
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>0.0.10</string>
+	<string>0.0.11</string>
 	<key>webaddress</key>
 	<string>http://guifreelife.com/</string>
 </dict>
