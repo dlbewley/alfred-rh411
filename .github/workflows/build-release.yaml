@@ -15,10 +15,10 @@ jobs:
       with:
         python-version: 2.7
     - name: Install Deps
-      run: |
-        make dep
+      id: python_pip
+      run: make dep
     - name: Build Alfred Workflow
-    	id: alfred_builder
+      id: alfred_builder
       uses: mperezi/build-alfred-workflow@v1
       with:
         workflow_dir: src
