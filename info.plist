@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>net.bewley.dale.rhemp</string>
+	<string>net.bewley.dale.rh411</string>
 	<key>category</key>
 	<string>Tools</string>
 	<key>connections</key>
@@ -25,11 +25,11 @@
 	<key>createdby</key>
 	<string>Dale Bewley</string>
 	<key>description</key>
-	<string>Red Hat 411 Employee Information Tool</string>
+	<string>Red Hat Employee Directory Tool</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Red Hat Employee Lookup</string>
+	<string>Red Hat 411</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -120,10 +120,19 @@
 			<integer>30</integer>
 		</dict>
 	</dict>
+	<key>variables</key>
+	<dict>
+		<key>ldap_basedn</key>
+		<string>ou=users,dc=redhat,dc=com</string>
+		<key>ldap_filter</key>
+		<string>(&amp;(objectclass=person)(|(uid={q})(sn={q})(mail={q}*)))</string>
+		<key>ldap_url</key>
+		<string>ldap://ldap.corp.redhat.com</string>
+	</dict>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>0.0.6</string>
+	<string>0.0.10</string>
 	<key>webaddress</key>
 	<string>http://guifreelife.com/</string>
 </dict>
