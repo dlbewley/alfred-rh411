@@ -1,6 +1,6 @@
 # Red Hat 411 Alfred Workflow
 
-RH411 [Alfred](https://www.alfredapp.com/) workflow provides lookup and display of Red Hat colleagues. VPN is required, as it conects to corporate directories.
+RH411 [Alfred](https://www.alfredapp.com/) workflow provides lookup and display of Red Hat colleagues. VPN is required, as it connects to corporate directories.
 
 # rhldap
 
