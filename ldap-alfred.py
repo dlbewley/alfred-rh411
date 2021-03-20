@@ -13,6 +13,9 @@ from workflow import (Workflow3, ICON_GROUP, ICON_NETWORK, ICON_ACCOUNT,
                       ICON_USER, ICON_INFO, ICON_CLOCK, ICON_WEB, ICON_WARNING,
                       ICON_ERROR)
 
+ICON_ROOT = '/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources'
+ICON_IPHONE = os.path.join(ICON_ROOT, 'com.apple.iphone-4-white.icns')
+ICON_PHONE = ICON_IPHONE
 
 def ask_ldap(query):
     import ldap3
@@ -42,7 +45,7 @@ def ask_ldap(query):
         wf.add_item(
             title=u"No matches found",
             subtitle=u"Try searching for usernames",
-            icon=ICON_ERROR)
+            icon=ICON_WARNING)
         return None
 
     return response
@@ -86,7 +89,8 @@ def main(wf):
                                              e.get('l', [""])[0]),
                     arg="mailto://%s" % e['mail'][0],
                     quicklookurl=gravatar_url,
-                    largetext=u'{cn} {email}\n{title}\n{location} {country}\n{costcenter}\nManager: {mgr}'.format(
+                    largetext=u'{cn} {email}\n{title}\n{location} {country}\n'
+                            '{costcenter}\nManager: {mgr}'.format(
                                 cn=e['cn'][0],
                                 title=e.get('title', [""])[0],
                                 country=e.get('c', ""),
@@ -102,28 +106,29 @@ def main(wf):
                     subtitle="Hired {when} by {mgr}".format(
                         when=humanize.naturaltime(hire_date),
                         mgr=mgr_uid),
-                    largetext="Hired on {hired} which is {ago}.\nWorks for {mgr}".format(
-                        hired=hire_date, ago=humanize.naturaltime(hire_date),
+                    largetext="Hired {ago} on {hired} and\nworks for {mgr}".format(
+                        hired=humanize.naturaldate(hire_date),
+                        ago=humanize.naturaltime(hire_date, ),
                         mgr=mgr_uid),
                     quicklookurl=gravatar_url,
-                    icon=ICON_INFO)
+                    icon=ICON_CLOCK)
 
         wf.add_item(u'Profile',
-                    icon=ICON_INFO,
+                    icon=social_icons['rover'],
                     subtitle="https://rover.redhat.com/people/profile/%s" % e['uid'][0],
                     arg="https://rover.redhat.com/people/profile/%s" % e['uid'][0],
                     valid=True)
 
         if len(e.get('mobile', [""])[0]):
             wf.add_item(u'Phone',
-                        icon="icons/phone.png",
+                        icon=ICON_PHONE,
                         subtitle=e['mobile'][0],
                         arg="tel://%s" % e['mobile'][0],
                         largetext=e['mobile'][0],
                         valid=True)
 
         wf.add_item(u'Source',
-                    icon=ICON_NETWORK,
+                    icon=social_icons['source'],
                     subtitle="https://source.redhat.com/.profile/%s" % e['uid'][0],
                     arg="https://source.redhat.com/.profile/%s" % e['uid'][0],
                     valid=True)
@@ -131,8 +136,13 @@ def main(wf):
         if len(e.get('rhatSocialURL', [])):
             for social in e['rhatSocialURL']:
                 (site, url) = social.split('->')
+                site_icon = ICON_NETWORK
+                for social_site in social_icons:
+                    if social_site in url.lower():
+                        site_icon = social_icons[social_site]
+
                 wf.add_item(site,
-                            icon=ICON_NETWORK,
+                            icon=site_icon,
                             subtitle=url,
                             arg=url,
                             valid=True)
@@ -147,7 +157,17 @@ if __name__ == '__main__':
         'ldap_filter': '(&(objectclass=person)(|(uid={q})(sn={q})(mail={q}*)))',
         'ldap_basedn': 'ou=users,dc=redhat,dc=com'
     }
-
+    social_icons = {
+        'blog': 'icons/blogger.png',
+        'docker': 'icons/registry.png',
+        'facebook': 'icons/facebook.png',
+        'github': 'icons/github.png',
+        'linkedin': 'icons/linkedin.png',
+        'quay': 'icons/registry.png',
+        'rover': 'icons/rover.png',
+        'source': 'icons/opensource.png',
+        'twitter': 'icons/twitter.png'
+    }
     # Create a global `Workflow3` object
     wf = Workflow3(
         libraries=['./lib'],
